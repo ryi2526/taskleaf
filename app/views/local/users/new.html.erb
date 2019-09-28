@@ -1,27 +1,47 @@
+<% if flash[:notice] %>
+    <div class="flash-notice">
+        <%= flash[:notice] %>
+        <!-- 特殊文字のボタン -->
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+<% end %>
 <h1>サインアップ</h1>
 
 <!-- postメソッドを使用するフォームを作成する -->
 <form action="/local/users" method="post">
     <!-- ユーザIDの入力欄 -->
-    <label for="userid">
-        ユーザID
-    </label>
-    <input class="form-control" id="user_id" type="text" name="user[UserID]">
-    <!-- ユーザ名の入力欄 -->
-    <label for="username">
-        ユーザ名
-    </label>
-    <input class="form-control" id="user_name" type="text" name="user[UserName]">
-    <!-- ユーザパスワードの入力欄 -->
-    <label for="password">
-        パスワード
-    </label>
-    <input class="form-control" id="user_password" type="text" name="user[password]">
-    <!-- ユーザパスワード確認の入力欄 -->
-    <label for="passwordconfirmation">
-        パスワード確認
-    </label>
-    <input class="form-control" id="user_password_confirmation" type="text" name="user[password_confirmation]">
+    <p>
+        <label for="userid">
+            ユーザID
+        </label>
+        <input class="form-control" id="user_id" type="text" name="user[UserID]">
+    </p>
 
-    <input type="submit" name="commit" value="登録する" class="createbtn" data-disable-with="登録する">
+    <!-- ユーザ名の入力欄 -->
+    <p>
+        <label for="username">
+            ユーザ名
+        </label>
+        <input class="form-control" id="user_name" type="text" name="user[UserName]">
+    </p>
+
+    <!-- ユーザパスワードの入力欄 -->
+    <p>
+        <label for="password">
+            パスワード
+        </label>
+        <input class="form-control" id="user_password" type="text" name="user[password]">
+    </p>
+
+    <!-- ユーザパスワード確認の入力欄 -->
+    <p>
+        <label for="passwordconfirmation">
+            パスワード確認
+        </label>
+        <input class="form-control" id="user_password_confirmation" type="text" name="user[password_confirmation]">
+    </p>
+    
+    <p>
+        <input type="submit" name="commit" value="登録する" class="createbtn" data-disable-with="登録する">
+    </p>
 </form>

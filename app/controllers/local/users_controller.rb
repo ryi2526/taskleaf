@@ -11,13 +11,22 @@ class Local::UsersController < ApplicationController
     @user = User.new(user_params)
 
     # ユーザの作成に成功したとき
-    if @user.save!
-      redirect_to local_user_path(@user.UserID), notice: "ユーザ「#{@user.UserName}」を登録しました。"
+    if @user.save
+      flash.now[:notice] = "ユーザ「#{@user.UserID}」を登録しました。"
+      redirect_to local_user_path(@user.UserID)
 
     # ユーザの作成に失敗したとき
     else
-      # ユーザを登録しないでnewに返す
-      render :new
+      # ユーザIDをチェックするためUserIDを探し格納する
+      userIDcheck = User.find_by(UserID: params[:UserID])
+      # ユーザIDの重複時
+      if userIDcheck.nil?
+        # ユーザを登録しないでnewに返す
+        flash.now[:notice] = "「#{@user.UserID}」はすでに使われています"
+        render :new
+      else
+        render :new
+      end
     end
 
   end
@@ -29,6 +38,7 @@ class Local::UsersController < ApplicationController
   end
 
   def show
+    # 受け取ったUserIDを検索する
     @user = User.find_by(UserID: params[:UserID])
   end
 
@@ -37,7 +47,7 @@ class Local::UsersController < ApplicationController
   
   # userインスタンスのパラメータ（column）を指定する
   def user_params
-    # 
+    # 受け取ったパラメータをcolumnに追加する
     params.require(:user).permit(:UserID, :UserName, :password, :password_confirmation)
   end
 

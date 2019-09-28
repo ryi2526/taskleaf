@@ -1,3 +1,19 @@
 // Place all the styles related to the Local::Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.notice {
+	text-align: center;
+}
+.flash-notice {
+    background-color: #bde9ff;
+    border-color: #bde9ff;
+    color: #4c6977;
+}
+
+.close{
+    background-color: #bde9ff;
+    border-color: #bde9ff;
+    color: #4c6977;
+    border: 1px solid #bde9ff
+}
