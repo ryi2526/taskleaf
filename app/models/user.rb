@@ -6,5 +6,5 @@ class User < ApplicationRecord
     # presence 入力させるかどうか, uniquness:keyかどうか
     validates :UserID, presence: true, uniqueness: true
     validates :UserName, presence: true
-    validates :password, presence: true
+    validates :password_digest, presence: true
 end
