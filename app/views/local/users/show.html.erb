@@ -1,5 +1,9 @@
 <% if flash[:notice] %>
-  <p><%= flash[:notice] %></p>
+  <div class="flash-notice">
+        <%= flash[:notice] %>
+        <!-- 特殊文字のボタン -->
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
 <% end %>
 <h1>プロフィール</h1>
 <p>Find me in app/views/local/users/show.html.erb</p>

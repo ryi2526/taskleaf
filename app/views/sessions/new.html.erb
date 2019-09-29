@@ -1,0 +1,23 @@
+<h1>ログイン画面</h1>
+
+<form action="/signin" method="post">
+    <!-- ユーザIDの入力欄 -->
+    <p>
+        <label for="userid">
+            ユーザID
+        </label>
+        <input class="form-control" id="session_id" type="text" name="session[UserID]" required>
+    </p>
+
+    <!-- ユーザパスワードの入力欄 -->
+    <p>
+        <label for="password">
+            パスワード
+        </label>
+        <input class="form-control" id="session_password" type="text" name="session[password]" required>
+    </p>
+
+    <p>
+        <input type="submit" name="commit" value="サインイン" class="createbtn" data-disable-with="サインイン">
+    </p>
+</form>

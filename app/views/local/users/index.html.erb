@@ -1,2 +1,8 @@
-<h1>Local::Users#index</h1>
-<p>Find me in app/views/local/users/index.html.erb</p>
+<div class="flash-notice">
+    <%= session[:UserID] %> が <%= flash[:notice] %>
+    <!-- 特殊文字のボタン -->
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+
+<h1>ユーザトップページ</h1>
+<%= link_to "削除する", signout_path(session[:UserID]), method: :delete %>

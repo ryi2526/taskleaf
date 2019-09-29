@@ -19,7 +19,7 @@ class Local::UsersController < ApplicationController
       flash.now[:notice] = "パスワードが一致しません"
       render :new
     
-    # 入力したUserIDがすでに使われているばあい
+    # 入力したUserIDがすでに使われている場合
     elsif User.where(UserID: @user.UserID).present? then
       flash.now[:notice] = "「#{@user.UserID}」はすでに使われています"
       render :new 
@@ -44,6 +44,8 @@ class Local::UsersController < ApplicationController
     @user = User.find_by(UserID: params[:UserID])
   end
 
+
+  
   # privateの下からは private action
   private
   
