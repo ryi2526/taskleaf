@@ -10,12 +10,38 @@
   </head>
 
   <body>
+    <!-- ログイン状態 -->
     <% if current_user %>
-      <div class="flash-notice">
-          <%= flash[:notice] %>
-          <!-- 特殊文字のボタン -->
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <div class="outer">
+        <div class="inner">
+          <div class="logo-wrapper"><%= image_tag '/logotype.png', :size =>"150x50" %></div>
+          <nav>
+            <ul id="list">
+              <li class="list-items">
+                <%= link_to "サインアウト", signout_path(session[:UserID]), method: :delete %>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
+
+    <!-- ログインしていない状態 -->
+    <% else %>
+      <div class="outer">
+        <div class="inner">
+          <div class="logo-wrapper"><%= image_tag '/logotype.png', :size =>"150x50" %></div>
+          <nav>
+            <ul id="list">
+              <li class="list-items">
+                <%= link_to("ログイン", "/signin") %>
+              </li>
+              <li class="list-items">
+                <%= link_to("新規登録", "/signup") %>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div> 
     <% end %>
 
     <%= yield %>

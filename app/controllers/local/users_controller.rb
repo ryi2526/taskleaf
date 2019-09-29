@@ -22,7 +22,7 @@ class Local::UsersController < ApplicationController
     # 入力したUserIDがすでに使われている場合
     elsif User.where(UserID: @user.UserID).present? then
       flash.now[:notice] = "「#{@user.UserID}」はすでに使われています"
-      render :new 
+      render :new
     
     # 入力項目が正しい場合
     else 
@@ -37,6 +37,7 @@ class Local::UsersController < ApplicationController
   end
 
   def edit
+    
   end
 
   def show

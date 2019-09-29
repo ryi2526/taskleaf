@@ -5,43 +5,45 @@
         <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
 <% end %>
-<h1>サインアップ</h1>
+<div class="wrapper">
+    <h1>サインアップ</h1>
 
-<!-- postメソッドを使用するフォームを作成する -->
-<form action="/local/users" method="post">
-    <!-- ユーザIDの入力欄 -->
-    <p>
-        <label for="userid">
-            ユーザID
-        </label>
-        <input class="form-control" id="user_id" type="text" name="user[UserID]" required>
-    </p>
+    <!-- postメソッドを使用するフォームを作成する -->
+    <form action="/local/users" method="post">
+        <!-- ユーザIDの入力欄 -->
+        <p>
+            <label for="userid">
+                ユーザID
+            </label>
+            <input class="form-control" id="user_id" type="text" name="user[UserID]" required>
+        </p>
 
-    <!-- ユーザ名の入力欄 -->
-    <p>
-        <label for="username">
-            ユーザ名
-        </label>
-        <input class="form-control" id="user_name" type="text" name="user[UserName]" required>
-    </p>
+        <!-- ユーザ名の入力欄 -->
+        <p>
+            <label for="username">
+                ユーザ名
+            </label>
+            <input class="form-control" id="user_name" type="text" name="user[UserName]" required>
+        </p>
 
-    <!-- ユーザパスワードの入力欄 -->
-    <p>
-        <label for="password">
-            パスワード
-        </label>
-        <input class="form-control" id="user_password" type="text" name="user[password]" required>
-    </p>
+        <!-- ユーザパスワードの入力欄 -->
+        <p>
+            <label for="password">
+                パスワード
+            </label>
+            <input class="form-control" id="user_password" type="password" name="user[password]" required>
+        </p>
 
-    <!-- ユーザパスワード確認の入力欄 -->
-    <p>
-        <label for="passwordconfirmation">
-            パスワード確認
-        </label>
-        <input class="form-control" id="user_password_confirmation" type="text" name="user[password_confirmation]" required>
-    </p>
-    
-    <p>
-        <input type="submit" name="commit" value="登録する" class="createbtn" data-disable-with="登録する">
-    </p>
-</form>
+        <!-- ユーザパスワード確認の入力欄 -->
+        <p>
+            <label for="passwordconfirmation">
+                パスワード確認
+            </label>
+            <input class="form-control" id="user_password_confirmation" type="password" name="user[password_confirmation]" required>
+        </p>
+        
+        <p>
+            <input type="submit" name="commit" value="登録する" class="createbtn" data-disable-with="登録する">
+        </p>
+    </form>
+</div>

@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
     private
 
     def current_user
-        
-        @current_user ||= User.find_by(id: session[:UserID]) if session[:UserID]
+        # セッションの情報を格納する
+        @current_user ||= User.find_by(UserID: session[:UserID]) if session[:UserID]
         
     end
 end

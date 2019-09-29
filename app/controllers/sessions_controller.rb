@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
   def new
   end
 
-
   def create
 
     # userオブジェクトにUserIDを格納する
@@ -14,7 +13,7 @@ class SessionsController < ApplicationController
     # パスワード認証が一致していたら
     if user&.authenticate(session_params[:password])
       session[:UserID] = user.UserID
-      redirect_to local_users_path, notice: 'ログインしました'
+      redirect_to local_users_path, notice: 'サインインしました'
     else
       render :new
     end
@@ -24,7 +23,7 @@ class SessionsController < ApplicationController
   def destroy
     # セッションを削除する
     reset_session
-    redirect_to local_users_path, notice: 'ログアウトしました。'
+    redirect_to local_users_path, notice: 'サインアウトしました。'
   end
 
   # privateの下からは private action
