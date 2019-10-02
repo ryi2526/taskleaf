@@ -36,22 +36,22 @@ class Local::UsersController < ApplicationController
   def index
   end
 
+  # 編集用の画面
   def edit
-    @user = User.find_by(UserID: params[:UserID])
+    @user = User.find_by(UserID: current_user.UserID)
   end
 
+  # ユーザの更新処理
   def update
+    # サインインしているユーザのUserIDを検索する
+    user = User.find_by(UserID: current_user.UserID)
+    # フォームからパラメータを受け取り更新する
+    user.update(useredit_params)
+    redirect_to local_users_path
+    
     @user = User.find_by(UserID: params[:UserID])
-    @user.UserID = params[:user[UserID]]
-    @user.UserName = params[:user[UserName]]
-    @user.Password = params[:user[password]]
-    if @user.update
-      flash[:notice] = "ユーザ情報を編集しました。"
-      redirect_to("/users/#{@user.UserID}")
-    else
-      render("users/edit")
-    end
   end
+    
 
   def show
     # 受け取ったUserIDを検索する
@@ -67,6 +67,11 @@ class Local::UsersController < ApplicationController
   def user_params
     # 受け取ったパラメータをcolumnに追加する
     params.require(:user).permit(:UserID, :UserName, :password, :password_confirmation)
+  end
+
+  def useredit_params
+    # 受け取ったパラメータをcolumnに追加する
+    params.require(:user).permit(current_user.UserID, :UserName)
   end
 
 end
