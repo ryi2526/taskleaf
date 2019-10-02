@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 # ユーザ作成
   get '/signup', to: 'local/users#new'
 
-# サインアップ  
+# サインイン 
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
 
