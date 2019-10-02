@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   delete '/signout', to: 'sessions#destroy'
 
 
+  get 'signin/:UserID/edit', to: 'local/users#edit'
   # local_users_path localがつく
   namespace :local do
     resources :users

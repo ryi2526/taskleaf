@@ -1,11 +1,11 @@
 class Local::UsersController < ApplicationController
   # CSRF対策からcreateアクションを除外
-  protect_from_forgery except: :create 
+  protect_from_forgery except: :create
 
 
   # usersテーブルに登録する（サインアップ画面）
   def new
-    # Userモデルを使用してuserインスタンスを作成する 
+    # Userモデルを使用してuserインスタンスを作成する
     @user = User.new
   end
 
@@ -18,14 +18,14 @@ class Local::UsersController < ApplicationController
     if @user.password != @user.password_confirmation
       flash.now[:notice] = "パスワードが一致しません"
       render :new
-    
+
     # 入力したUserIDがすでに使われている場合
     elsif User.where(UserID: @user.UserID).present? then
       flash.now[:notice] = "「#{@user.UserID}」はすでに使われています"
       render :new
-    
+
     # 入力項目が正しい場合
-    else 
+    else
       # userインスタンスを登録
       @user.save!
       flash.now[:notice] = "ユーザ「#{@user.UserID}」を登録しました。"
@@ -48,7 +48,10 @@ class Local::UsersController < ApplicationController
     # フォームからパラメータを受け取り更新する
     user.update(useredit_params)
     redirect_to local_users_path
+    
+    @user = User.find_by(UserID: params[:UserID])
   end
+    
 
   def show
     # 受け取ったUserIDを検索する
@@ -56,10 +59,10 @@ class Local::UsersController < ApplicationController
   end
 
 
-  
+
   # privateの下からは private action
   private
-  
+
   # userインスタンスのパラメータ（column）を指定する
   def user_params
     # 受け取ったパラメータをcolumnに追加する
