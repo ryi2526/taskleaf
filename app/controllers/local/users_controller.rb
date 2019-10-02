@@ -1,6 +1,8 @@
 class Local::UsersController < ApplicationController
   # CSRF対策からcreateアクションを除外
   protect_from_forgery except: :create
+  # singin_requiredをスキップする
+  skip_before_action :signin_required, only: [:new, :create]
 
 
   # usersテーブルに登録する（サインアップ画面）

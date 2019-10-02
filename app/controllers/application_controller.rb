@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
 
     # ヘルパー　current_userを使用可能にする
     helper_method :current_user
+
+    # サインインしているか調べる
+    before_action :signin_required
     
 
     private
@@ -15,4 +18,9 @@ class ApplicationController < ActionController::Base
         @current_user ||= User.find_by(UserID: session[:UserID]) if session[:UserID]
         
     end
+
+    def signin_required
+        redirect_to signin_path unless current_user
+    end
+
 end

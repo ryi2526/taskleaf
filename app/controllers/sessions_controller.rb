@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
   # CSRF対策からcreateアクションを除外
   protect_from_forgery except: :create 
+  # singin_requiredをスキップする
+  skip_before_action :signin_required
 
   def new
   end
