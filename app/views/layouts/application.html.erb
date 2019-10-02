@@ -18,7 +18,7 @@
           <nav>
             <ul id="list">
               <li class="list-items">
-                <%= link_to "プロフィール編集", useredit_path(session[:UserID]), method: :get %>
+                <%= link_to "プロフィール編集", edituser_path(session[:UserID]), method: :get %>
               </li>
               <li class="list-items">
                 <%= link_to "サインアウト", signout_path(session[:UserID]), method: :delete %>

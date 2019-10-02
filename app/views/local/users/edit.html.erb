@@ -2,7 +2,7 @@
     <h1>ユーザ編集</h1>
 
     <!-- postメソッドを使用するフォームを作成する -->
-    <form action="/update" method="patch">
+    <form action="/update/:UserID" method="patch">
         <!-- ユーザIDの表示欄 -->
         <p>
             <label for="userid">
@@ -19,7 +19,7 @@
             </label>
             <input class="form-control" id="user_name" type="text" name="user[UserName]" required>
         </p>
-              
+
         <p>
             <input type="submit" name="update" value="変更する" class="updatebtn" data-disable-with="変更する">
         </p>

@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  resources :users, only: [:edit ,:update], param: :UserID
+  resources :editusers, only: [:edit ,:update], param: :UserID
+
+
+# ユーザ編集
+  get '/editusers/:UserID', to: 'local/users#edit'
+  get '/update/:UserID', to: 'local/users#update'
+  patch '/update/:UserID', to: 'local/users#update'
+  put '/update/:UserID', to: 'local/users#update'
 
 # ユーザ作成
   get '/signup', to: 'local/users#new'
-
-# ユーザ編集
-  get '/useredit', to: 'local/users#edit'
-  get '/update', to: 'local/users#update'
-  patch '/update', to: 'local/users#update'
-  put '/update', to: 'local/users#update'
 
 # サインアップ  
   get '/signin', to: 'sessions#new'
@@ -17,8 +18,6 @@ Rails.application.routes.draw do
 # サインアウト
   delete '/signout', to: 'sessions#destroy'
 
-
-  get 'signin/:UserID/edit', to: 'local/users#edit'
   # local_users_path localがつく
   namespace :local do
     resources :users
